@@ -49,7 +49,8 @@ export class MongoConnector {
 
             const options: ConnectionOptions = {
                 keepAlive: true,
-                useNewUrlParser: true
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
                 // promiseLibrary: require('bluebird')
             };
             this.mongoConnection = mongoose.connection;
