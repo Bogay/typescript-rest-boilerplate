@@ -1,0 +1,8 @@
+bail: true
+timeout: 15000
+full-trace: true
+exit: true
+extension:
+  - js
+  - ts
+require: ts-node/register
