@@ -15,31 +15,31 @@ export class ApiServer {
     constructor() {
         this.app = express();
         this.config();
-
         Server.useIoC();
-
         Server.loadServices(this.app, 'controller/*', __dirname);
-        Server.swagger(this.app, { filePath: './dist/swagger.json' });
+        Server.swagger(
+            this.app,
+            {
+                endpoint: '/',
+                filePath: './dist/swagger.json'
+            }
+        );
     }
 
     /**
      * Start the server
      */
-    public async start() {
-        return new Promise<any>((resolve, reject) => {
-            this.server = this.app.listen(this.PORT, (err: any) => {
-                if (err) {
-                    return reject(err);
-                }
-
+    public start() {
+        return new Promise<void>((resolve, reject) => {
+            this.server = this.app.listen(this.PORT, () => {
                 // TODO: replace with Morgan call
                 // tslint:disable-next-line:no-console
                 console.log(`Listening to http://127.0.0.1:${this.PORT}`);
-
                 return resolve();
+            }).on('error', (err) => {                
+                return reject(err);
             });
         });
-
     }
 
     /**
