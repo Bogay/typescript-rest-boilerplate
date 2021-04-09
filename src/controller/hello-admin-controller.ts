@@ -31,7 +31,6 @@ export class HelloAdminController {
      */
     @POST
     public createAdmin(newRecord: AdminModel): Promise<AdminModel> {
-        console.log(newRecord);
         return Admin.create(newRecord);
     }
 

@@ -3,7 +3,7 @@
 import { ApiServer } from './api-server';
 import { MongoConnector } from "./mongo-connector";
 
-export async function start(): Promise<void> {
+export async function start() {
     const mongoConnector = new MongoConnector();
     const apiServer = new ApiServer();
     await apiServer.start();
@@ -13,7 +13,6 @@ export async function start(): Promise<void> {
         await apiServer.stop();
         process.exit(0);
     };
-
     // Stop graceful
     process.on('SIGTERM', graceful);
     process.on('SIGINT', graceful);
