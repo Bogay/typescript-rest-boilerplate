@@ -8,7 +8,7 @@ export interface AdminModel {
     email: string;
     password: string;
     role: string;
-};
+}
 
 export const adminSecret = 'sdHvj5bS3rq765hSDs';
 
